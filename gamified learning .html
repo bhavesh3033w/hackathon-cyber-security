@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamified Learning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 32px 16px;
+      background: rgba(20, 30, 48, 0.95);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(4px);
+    }
+    .title {
+      font-size: 2.5em;
+      margin-bottom: 32px;
+      background: linear-gradient(to right, #00ffcc, #00ffff, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulseText 2s infinite;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    @keyframes pulseText {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .card {
+      background: linear-gradient(135deg, #1c1c1c 60%, #2e2e2e 100%);
+      border-radius: 20px;
+      padding: 32px 20px 28px 20px;
+      box-shadow: 0 0 24px 0 rgba(0, 255, 204, 0.12);
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 320px;
+    }
+    .card img {
+      width: 72px;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 0 8px #00ffcc55);
+    }
+    .card h2 {
+      margin: 0 0 12px 0;
+      font-size: 1.4em;
+      letter-spacing: 1px;
+      color: #00ffcc;
+    }
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 2em;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .points-bar {
+      width: 100%;
+      height: 12px;
+      background: #222;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 10px;
+      box-shadow: 0 0 8px #00ffcc44;
+    }
+    .points-fill {
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(90deg, #00ffcc, #00bfff);
+      border-radius: 8px 0 0 8px;
+      transition: width 0.5s;
+    }
+    .quiz-btn {
+      margin-top: 18px;
+      padding: 12px 28px;
+      background: linear-gradient(90deg, #00ffcc, #00bfff);
+      border: none;
+      color: #222;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #00ffcc33;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+    .quiz-btn:hover {
+      background: linear-gradient(90deg, #00bfff, #00ffcc);
+      color: #111;
+      transform: scale(1.05);
+    }
+    .radar-chart {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
+      background: rgba(0,255,204,0.05);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px #00ffcc22;
+    }
+    /* Fake responsive: just shrink everything on small screens */
+    @media (max-width: 900px) {
+      .container {
+        padding: 10px 2px;
+      }
+      .title {
+        font-size: 1.5em;
+      }
+      .card {
+        min-height: 180px;
+        padding: 10px 4px 10px 4px;
+      }
+      .card img {
+        width: 48px;
+      }
+      .radar-chart {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .container {
+        padding: 2px 0;
+      }
+      .title {
+        font-size: 1em;
+      }
+      .card {
+        min-height: 120px;
+        padding: 6px 2px 6px 2px;
+      }
+      .card img {
+        width: 32px;
+      }
+      .radar-chart {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">🎮 Gamified Learning</div>
+    <div class="grid">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Badges">
+        <h2>Badges</h2>
+        <p>🏅 Novice &nbsp;&nbsp; 🔥 Exploiter &nbsp;&nbsp; 🌟 Analyst &nbsp;&nbsp; 🏆 Achiever</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Points">
+        <h2>Points</h2>
+        <h3 id="points-value">1,250</h3>
+        <div class="points-bar">
+          <div class="points-fill" id="points-fill"></div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Quizzes">
+        <h2>Interactive Quizzes</h2>
+        <p>Challenge yourself with fun and timed quizzes!</p>
+        <button class="quiz-btn" id="quiz-btn">Start Quiz</button>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263115.png" alt="Skills">
+        <h2>Skill Strengths</h2>
+        <div class="radar-chart">
+          <canvas id="skillsRadar" width="160" height="160"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Fake responsive: animate points bar and quiz button
+    document.getElementById('quiz-btn').onclick = function() {
+      alert('Quiz feature coming soon!');
+    };
+    // Animate points bar fill (fake/prototype)
+    setTimeout(function() {
+      document.getElementById('points-fill').style.width = "90%";
+      document.getElementById('points-value').textContent = "1,600";
+    }, 1500);
+
+    // Radar chart for skills
+    const ctx = document.getElementById('skillsRadar').getContext('2d');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Network', 'Web', 'Forensics', 'Crypto', 'OSINT', 'Reverse'],
+        datasets: [{
+          label: 'Your Skills',
+          data: [80, 65, 70, 60, 75, 50],
+          backgroundColor: 'rgba(0,255,204,0.2)',
+          borderColor: '#00ffcc',
+          pointBackgroundColor: '#00bfff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            angleLines: { color: '#00bfff33' },
+            grid: { color: '#00bfff22' },
+            pointLabels: { color: '#fff', font: { size: 12 } },
+            min: 0,
+            max: 100,
+            ticks: { display: false }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

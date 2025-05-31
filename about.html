@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cybersecurity Site - About</title>
+  <style>
+    /* General Styling */
+    body {
+      background: linear-gradient(to right, #001a33, #00224d);
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    h1 {
+      font-size: 2.5em;
+      color: #00ff99;
+      text-shadow: 0 0 10px #00ff99;
+    }
+
+    h2 {
+      color: #00ff99;
+    }
+
+    p, ul {
+      font-size: 1.2em;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .bits {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: lime;
+      opacity: 0.8;
+      animation: floatBits 6s infinite linear;
+    }
+
+    @keyframes floatBits {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    /* Section Styling */
+    .page {
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      width: 80%;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0, 255, 100, 0.4);
+    }
+
+    /* Scroll Buttons */
+    .scroll-btn {
+      background: linear-gradient(45deg, #00ff99, #0088ff);
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0, 255, 100, 0.4);
+    }
+
+    .scroll-btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #0088ff, #00ff99);
+      box-shadow: 0 6px 15px rgba(0, 255, 100, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+
+  <main>
+    <section id="about" class="page active">
+      <h1>About Us</h1>
+      <p>Welcome to our cybersecurity learning platform. We are committed to equipping individuals with the tools and knowledge to thrive in a secure digital environment.</p>
+
+      <h2>Vision</h2>
+      <p>To create a safer digital world by making cybersecurity education accessible and engaging for everyone.</p>
+
+      <h2>Mission</h2>
+      <ul>
+        <li>Provide high-quality, interactive cybersecurity training.</li>
+        <li>Foster a community of informed and security-conscious users.</li>
+        <li>Bridge the cybersecurity skills gap through innovative learning methods.</li>
+      </ul>
+
+      <h2>Our Values</h2>
+      <ul>
+        <li>Integrity in education</li>
+        <li>Innovation in delivery</li>
+        <li>Inclusivity in access</li>
+      </ul>
+
+      
+    </section>
+  </main>
+
+  <script>
+    // Floating Bits Animation
+    document.addEventListener("DOMContentLoaded", function() {
+      const container = document.querySelector('.animated-bg');
+      for (let i = 0; i < 20; i++) {
+        let bit = document.createElement("div");
+        bit.classList.add("bits");
+        bit.style.left = `${Math.random() * 100}%`;
+        bit.style.animationDuration = `${Math.random() * 5 + 3}s`;
+        container.appendChild(bit);
+      }
+    });
+
+  
+  </script>
+
+</body>
+</html>

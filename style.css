@@ -1,0 +1,139 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+header {
+  background: #161b22;
+  padding: 1em;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+}
+
+nav ul li a {
+  color: #58a6ff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 2em;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page {
+  display: block;
+}
+
+button {
+  background-color: #238636;
+  color: white;
+  border: none;
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #2ea043;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid #30363d;
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.course-item {
+  background: #161b22;
+  border-radius: 8px;
+  padding: 1em;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.course-item img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+.certification {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.certification h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.certification-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 15px;
+}
+
+.cert-card {
+  flex: 0 0 auto;
+  width: 220px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cert-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cert-card p {
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cert-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
